@@ -2,7 +2,20 @@
 
 用 iPhone 看和操作電腦上 [herdr](https://herdr.dev) 裡的 AI agent（Claude Code、Codex），只走你自己的網路（Tailscale 或 SSH）。
 
-這裡只放安裝檔。下載你電腦的那一個（永遠是最新版，不用登入）：
+這裡只放安裝檔。最快的做法是一行指令，它會自己下載你電腦的那一個、解壓縮、執行安裝程式：
+
+```sh
+# Mac（終端機）
+curl -fsSL https://github.com/aeronan/allymote-releases/releases/latest/download/install.sh | sh
+```
+
+```powershell
+# Windows（PowerShell）
+irm https://github.com/aeronan/allymote-releases/releases/latest/download/install.ps1 | iex
+```
+
+或者自己下載你電腦的那一個（永遠是最新版，不用登入）：
+
 
 - Apple 晶片的 Mac（M1 以後）：<https://github.com/aeronan/allymote-releases/releases/latest/download/allymote-macos-arm64.zip>
 - Intel Mac：<https://github.com/aeronan/allymote-releases/releases/latest/download/allymote-macos-x64.zip>
@@ -15,4 +28,4 @@
 
 需要先裝好：herdr。要用 Tailscale 連線的話，電腦和 iPhone 登入同一個 Tailscale 帳號。
 
-裝好之後會自動更新。[Releases](https://github.com/aeronan/allymote-releases/releases) 頁上 `herdr-remote-…` 開頭的檔案和 `latest.json` 是給已安裝的電腦自動更新用的，不要下載它們來安裝。
+裝好之後會自動更新。[Releases](https://github.com/aeronan/allymote-releases/releases) 頁上檔名裡有版本號的 `allymote-<版本>-…` 和 `latest.json` 是給已安裝的電腦自動更新用的，內容和上面三個相同。想馬上更新，在電腦上執行 `allymote update`。
