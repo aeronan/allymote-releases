@@ -29,3 +29,10 @@ irm https://github.com/aeronan/allymote-releases/releases/latest/download/instal
 需要先裝好：herdr。要用 Tailscale 連線的話，電腦和 iPhone 登入同一個 Tailscale 帳號。
 
 裝好之後會自動更新。[Releases](https://github.com/aeronan/allymote-releases/releases) 頁上檔名裡有版本號的 `allymote-<版本>-…` 和 `latest.json` 是給已安裝的電腦自動更新用的，內容和上面三個相同。想馬上更新，在電腦上執行 `allymote update`。
+
+## 支援 · Support
+
+有問題或要回報錯誤，請寫信到 <sidepathnotes@gmail.com>。
+Questions or problems with Allymote: email <sidepathnotes@gmail.com>.
+
+隱私權政策 · Privacy Policy: <https://aeronan.github.io/allymote-releases/privacy.html>
