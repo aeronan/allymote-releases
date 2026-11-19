@@ -23,23 +23,28 @@ section + section { border-top: 1px solid var(--rule); margin-top: 48px; }
 <nav><a href="#en">English</a><a href="#zh-Hant" lang="zh-Hant">繁體中文</a></nav>
 <section id="en" lang="en">
 <h1>Allymote Privacy Policy</h1>
-<p>Effective date: 7 November 2026</p>
+<p>Effective date: 19 November 2026</p>
 <p>Allymote is an iPhone app that lets you watch and drive the AI agents running in herdr on your own computers. This policy covers Allymote version 1.0.</p>
 <h2>The short version</h2>
 <ul>
 <li><strong>We collect nothing.</strong> The developer of Allymote runs no server for the app and receives no data from it: no account, no analytics, no advertising, no tracking, no crash reports sent to us.</li>
-<li><strong>The app talks only to your own computers.</strong> Everything you see and send in Allymote travels between your iPhone and the computers you paired yourself, over your own network (normally your Tailscale network), encrypted with HTTPS.</li>
+<li><strong>The app talks only to your own computers.</strong> Everything you see and send in Allymote travels between your iPhone and the computers you paired yourself, over your own network (your Tailscale network, or your local network over SSH), encrypted with HTTPS or SSH.</li>
 <li><strong>What stays on your phone stays on your phone.</strong> Nothing the app keeps is sent to the developer or to anyone else.</li>
 </ul>
 <h2>Who runs what</h2>
 <p>Allymote has two parts, and you run both of them:</p>
 <ol>
 <li><strong>The app</strong> on your iPhone.</li>
-<li><strong>The Allymote server</strong> on your own Mac or Windows PC, next to herdr. herdr is a separate, third-party product (herdr.dev); Allymote works with herdr but is not made by or affiliated with its developers.</li>
+<li><strong>The Allymote server</strong> on your own Mac or Windows PC, next to herdr. If you add a computer over SSH with "Only herdr", there is no Allymote server on it: the app talks to herdr itself. herdr is a separate, third-party product (herdr.dev); Allymote works with herdr but is not made by or affiliated with its developers.</li>
 </ol>
 <p>There is no third part. The developer of Allymote does not operate a relay, a cloud service or any other server that your data passes through. Version 1.0 has no push notifications.</p>
 <h2>What the app sends, and where</h2>
-<p>The app connects only to the addresses of the computers you pair with it. It accepts only <code>https</code> addresses. Over that connection it sends and receives:</p>
+<p>The app connects only to the computers you pair with it, in one of two ways:</p>
+<ul>
+<li>over <code>https</code>, to the address you paired (no other kind of address is accepted);</li>
+<li>over SSH, to the host and port you entered or scanned, and only to a computer showing the host key you confirmed when you added it (its fingerprint is shown, and nothing is sent to a computer showing another key).</li>
+</ul>
+<p>Over that connection it sends and receives:</p>
 <ul>
 <li>the agents, terminal screens and conversations that your computer shows it;</li>
 <li>what you type, the keys you press, your answers to an agent's questions and the sessions you start;</li>
@@ -47,13 +52,15 @@ section + section { border-top: 1px solid var(--rule); margin-top: 48px; }
 <li>when pairing, the one-time pairing code and a device name of the form "Allymote on iPhone" (the name you gave your phone is not sent).</li>
 </ul>
 <p>This traffic goes from your device to your own computer. It is not sent to the developer.</p>
+<p>When you add a computer over SSH, you can let the app add this iPhone's key there with your account password on that computer. The password is sent once, over SSH, only to the computer whose host key you confirmed, and is used only to add the key. It is never stored.</p>
 <p>The setup guide in the app contains links to the Tailscale, herdr and Allymote download pages. Tapping one opens Safari; those sites have their own privacy policies.</p>
 <h2>What is kept on your phone</h2>
 <ul>
 <li><strong>Device tokens</strong>, one per paired computer, in the iOS Keychain, readable only while the device is unlocked, on this device only (they are not synced to iCloud and are not restored to another device).</li>
-<li><strong>Settings and list preferences</strong> in the app's own storage on the phone: the paired computers' names and addresses, whether the app lock is on, text size and layout, pinned, muted and folded items in the list, and the first messages you used for new sessions (text that looks like a password or key is never kept).</li>
+<li><strong>SSH keys</strong>, one per computer added over SSH. The private key is made in the iPhone's Secure Enclave and never leaves it; the Keychain holds only the enclave's wrapped form, on this device only.</li>
+<li><strong>Settings and list preferences</strong> in the app's own storage on the phone: the paired computers' names and addresses (for SSH, also the user name, ports and the computer's host key), whether the app lock is on, text size and layout, pinned, muted and folded items in the list, and the first messages you used for new sessions (text that looks like a password or key is never kept).</li>
 </ul>
-<p>Deleting the app removes its settings. iOS can keep Keychain items after an app is deleted; if you install Allymote again, it deletes any token no paired computer uses when it is first unlocked. To remove a phone's access from a computer, revoke it in Settings → Paired Devices, or on the computer.</p>
+<p>Deleting the app removes its settings. iOS can keep Keychain items after an app is deleted; if you install Allymote again, it deletes any token no paired computer uses when it is first unlocked. To remove a phone's access from a computer, revoke it in Settings → Paired Devices, or on the computer. For a computer added over SSH, also delete the line ending in <code>allymote-phone</code> from the computer's <code>authorized_keys</code>.</p>
 <h2>Camera</h2>
 <p>The app asks for the camera only when you choose to use it:</p>
 <ul>
@@ -61,6 +68,8 @@ section + section { border-top: 1px solid var(--rule); margin-top: 48px; }
 <li>to take a photo when you choose <strong>Take Photo</strong> to attach it.</li>
 </ul>
 <p>QR codes are read on the phone. A photo you take is sent only to the computer whose agent you are attaching it to. The app does not keep a copy and does not save it to your photo library.</p>
+<h2>Local network</h2>
+<p>If you add a computer over SSH on your local network, iOS asks whether Allymote may connect to devices on your local network. The app uses that only to connect to the computers you added. You can change it in the iOS Settings app.</p>
 <h2>Photos and files you attach</h2>
 <p>When you attach a photo (from the camera or your library) or a file, it is sent to your own computer, so the agent there can read it. Photos are sent without their location or other metadata. Your computer keeps attachments in the Allymote data folder (<code>~/.allymote/uploads</code> on a Mac, <code>%LOCALAPPDATA%\allymote\uploads</code> on Windows) and deletes them after 7 days. The app reads from your photo library only the items you pick in the system picker.</p>
 <h2>Face ID</h2>
@@ -68,7 +77,7 @@ section + section { border-top: 1px solid var(--rule); margin-top: 48px; }
 <h2>The demo</h2>
 <p><strong>Try the Demo</strong> on the pairing screen shows a pretend computer whose content is built into the app. It works offline: nothing is sent anywhere and nothing is stored in the Keychain.</p>
 <h2>Your computer and your network</h2>
-<p>Your computer and your Tailscale network are yours. What the Allymote server and herdr on your computer keep (for example, its list of paired devices, an audit log of their actions, and attachments for 7 days) stays on that computer. Tailscale is a third-party service with its own privacy policy; Allymote does not send it anything beyond the normal network traffic between your own devices.</p>
+<p>Your computer and your network (your Tailscale network or your local network) are yours. What the Allymote server and herdr on your computer keep (for example, its list of paired devices, an audit log of their actions, and attachments for 7 days) stays on that computer. Tailscale is a third-party service with its own privacy policy; Allymote does not send it anything beyond the normal network traffic between your own devices.</p>
 <h2>Children</h2>
 <p>Allymote is a tool for people who run AI coding agents on their own computers. It is not directed at children and collects no data from anyone.</p>
 <h2>Changes</h2>
@@ -78,23 +87,28 @@ section + section { border-top: 1px solid var(--rule); margin-top: 48px; }
 </section>
 <section id="zh-Hant" lang="zh-Hant">
 <h1>Allymote 隱私權政策</h1>
-<p>生效日期：2026 年 11 月 7 日</p>
+<p>生效日期：2026 年 11 月 19 日</p>
 <p>Allymote 是一款 iPhone app，讓你查看並操作自己電腦上、在 herdr 裡執行的 AI agent。本政策適用於 Allymote 1.0 版。</p>
 <h2>重點摘要</h2>
 <ul>
 <li><strong>我們不蒐集任何資料。</strong> Allymote 的開發者沒有為這個 app 架設任何伺服器，也不會從 app 收到任何資料：沒有帳號、沒有分析、沒有廣告、沒有追蹤，也不會把當機報告傳給我們。</li>
-<li><strong>App 只和你自己的電腦連線。</strong> 你在 Allymote 裡看到和送出的一切，都只在你的 iPhone 和你親自配對的電腦之間傳輸，經由你自己的網路（通常是你的 Tailscale 網路），並以 HTTPS 加密。</li>
+<li><strong>App 只和你自己的電腦連線。</strong> 你在 Allymote 裡看到和送出的一切，都只在你的 iPhone 和你親自配對的電腦之間傳輸，經由你自己的網路（你的 Tailscale 網路，或透過 SSH 連線的區域網路），並以 HTTPS 或 SSH 加密。</li>
 <li><strong>留在手機上的就只留在手機上。</strong> App 保存的任何東西都不會傳給開發者或其他任何人。</li>
 </ul>
 <h2>誰在執行什麼</h2>
 <p>Allymote 由兩個部分組成，兩者都由你自己執行：</p>
 <ol>
 <li>你 iPhone 上的 <strong>app</strong>。</li>
-<li>你自己的 Mac 或 Windows 電腦上、與 herdr 一起執行的 <strong>Allymote 伺服器</strong>。herdr 是獨立的第三方產品（herdr.dev）；Allymote 可與 herdr 搭配使用，但並非由 herdr 的開發者製作，與其也沒有任何隸屬關係。</li>
+<li>你自己的 Mac 或 Windows 電腦上、與 herdr 一起執行的 <strong>Allymote 伺服器</strong>。若你透過 SSH 新增電腦時選擇「只有 herdr」，那台電腦上就沒有 Allymote 伺服器，app 會直接和 herdr 溝通。herdr 是獨立的第三方產品（herdr.dev）；Allymote 可與 herdr 搭配使用，但並非由 herdr 的開發者製作，與其也沒有任何隸屬關係。</li>
 </ol>
 <p>除此之外沒有第三個部分。Allymote 的開發者不經營任何中繼站、雲端服務或其他會經手你資料的伺服器。1.0 版沒有推播通知。</p>
 <h2>App 會送出什麼、送到哪裡</h2>
-<p>App 只會連線到你配對的電腦位址，而且只接受 <code>https</code> 位址。透過這個連線，它會傳送與接收：</p>
+<p>App 只會連線到你配對的電腦，方式有兩種：</p>
+<ul>
+<li>透過 <code>https</code> 連到你配對的位址（不接受其他種類的位址）；</li>
+<li>透過 SSH 連到你輸入或掃描的主機和連接埠，而且只連到出示你新增時確認過的主機金鑰的電腦（會顯示金鑰指紋；出示其他金鑰的電腦不會收到任何資料）。</li>
+</ul>
+<p>透過這個連線，它會傳送與接收：</p>
 <ul>
 <li>你的電腦提供給它的 agent、終端機畫面和對話；</li>
 <li>你輸入的文字、按下的按鍵、你對 agent 問題的回答，以及你啟動的工作階段；</li>
@@ -102,13 +116,15 @@ section + section { border-top: 1px solid var(--rule); margin-top: 48px; }
 <li>配對時的一次性配對碼，以及「Allymote on iPhone」這類的裝置名稱（你為手機取的名稱不會被送出）。</li>
 </ul>
 <p>這些傳輸都是從你的裝置到你自己的電腦，不會傳給開發者。</p>
+<p>透過 SSH 新增電腦時，你可以用你在那台電腦上的帳號密碼，讓 app 把這支 iPhone 的金鑰加到那台電腦。密碼只會傳送一次，只透過 SSH 傳給出示你確認過的主機金鑰的電腦，只用來加入金鑰，而且永遠不會保存。</p>
 <p>App 內的設定指南附有 Tailscale、herdr 和 Allymote 下載頁面的連結。點選後會在 Safari 開啟；這些網站各有自己的隱私權政策。</p>
 <h2>保存在手機上的資料</h2>
 <ul>
 <li><strong>裝置權杖</strong>：每台配對的電腦一個，存放在 iOS 鑰匙圈中，只在裝置解鎖時可讀取，且只存在這台裝置上（不會同步到 iCloud，也不會還原到其他裝置）。</li>
-<li><strong>設定與列表偏好</strong>：存放在手機上 app 自己的儲存空間，包括配對電腦的名稱與位址、是否開啟 app 鎖定、文字大小與版面，列表中釘選、靜音和收合的項目，以及你用過的新工作階段開頭訊息（看起來像密碼或金鑰的文字一律不保存）。</li>
+<li><strong>SSH 金鑰</strong>：每台透過 SSH 新增的電腦一把。私鑰在 iPhone 的 Secure Enclave 內產生，永遠不會離開它；鑰匙圈裡只保存 Secure Enclave 包裝過的形式，且只存在這台裝置上。</li>
+<li><strong>設定與列表偏好</strong>：存放在手機上 app 自己的儲存空間，包括配對電腦的名稱與位址（SSH 電腦還有使用者名稱、連接埠和電腦的主機金鑰）、是否開啟 app 鎖定、文字大小與版面，列表中釘選、靜音和收合的項目，以及你用過的新工作階段開頭訊息（看起來像密碼或金鑰的文字一律不保存）。</li>
 </ul>
-<p>刪除 app 會一併刪除它的設定。iOS 可能在 app 刪除後保留鑰匙圈項目；若你重新安裝 Allymote，它會在第一次解鎖時刪除沒有任何配對電腦使用的權杖。若要撤銷某支手機對電腦的存取權，請在「設定」→「已配對的裝置」中撤銷，或在電腦上撤銷。</p>
+<p>刪除 app 會一併刪除它的設定。iOS 可能在 app 刪除後保留鑰匙圈項目；若你重新安裝 Allymote，它會在第一次解鎖時刪除沒有任何配對電腦使用的權杖。若要撤銷某支手機對電腦的存取權，請在「設定」→「已配對的裝置」中撤銷，或在電腦上撤銷。透過 SSH 新增的電腦，另外要刪除電腦上 <code>authorized_keys</code> 裡結尾是 <code>allymote-phone</code> 的那一行。</p>
 <h2>相機</h2>
 <p>App 只會在你選擇使用時才要求相機權限：</p>
 <ul>
@@ -116,6 +132,8 @@ section + section { border-top: 1px solid var(--rule); margin-top: 48px; }
 <li>在你選擇「<strong>拍照</strong>」附加照片時拍攝照片。</li>
 </ul>
 <p>QR 碼在手機上讀取。你拍攝的照片只會傳送到你要附加照片的那個 agent 所在的電腦。App 不會保留副本，也不會存入你的照片圖庫。</p>
+<h2>區域網路</h2>
+<p>若你透過 SSH 新增區域網路上的電腦，iOS 會詢問是否允許 Allymote 連線到區域網路上的裝置。App 只用這個權限連線到你新增的電腦。你可以在 iOS 的「設定」app 中更改。</p>
 <h2>你附加的照片和檔案</h2>
 <p>當你附加照片（來自相機或照片圖庫）或檔案時，它會被傳送到你自己的電腦，讓那裡的 agent 讀取。照片送出時不含位置或其他中繼資料。你的電腦會把附件存放在 Allymote 資料夾（Mac 上為 <code>~/.allymote/uploads</code>，Windows 上為 <code>%LOCALAPPDATA%\allymote\uploads</code>），並在 7 天後刪除。App 只會讀取你在系統選擇器中挑選的照片圖庫項目。</p>
 <h2>Face ID</h2>
@@ -123,7 +141,7 @@ section + section { border-top: 1px solid var(--rule); margin-top: 48px; }
 <h2>示範模式</h2>
 <p>配對畫面上的「<strong>試用示範</strong>」會顯示一台虛擬電腦，其內容都內建在 app 中。它可離線使用：不會傳送任何資料，也不會在鑰匙圈中儲存任何東西。</p>
 <h2>你的電腦與你的網路</h2>
-<p>你的電腦和你的 Tailscale 網路屬於你自己。你電腦上的 Allymote 伺服器和 herdr 所保存的資料（例如已配對裝置清單、裝置操作的稽核紀錄，以及保存 7 天的附件）都留在那台電腦上。Tailscale 是第三方服務，有自己的隱私權政策；除了你自己裝置之間的一般網路傳輸外，Allymote 不會傳送任何資料給它。</p>
+<p>你的電腦和你的網路（你的 Tailscale 網路或區域網路）屬於你自己。你電腦上的 Allymote 伺服器和 herdr 所保存的資料（例如已配對裝置清單、裝置操作的稽核紀錄，以及保存 7 天的附件）都留在那台電腦上。Tailscale 是第三方服務，有自己的隱私權政策；除了你自己裝置之間的一般網路傳輸外，Allymote 不會傳送任何資料給它。</p>
 <h2>兒童</h2>
 <p>Allymote 是給在自己電腦上執行 AI 程式 agent 的人使用的工具，並非以兒童為對象，也不會蒐集任何人的資料。</p>
 <h2>政策變更</h2>
