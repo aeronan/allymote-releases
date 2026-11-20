@@ -20,7 +20,7 @@ main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
 nav { display: flex; gap: 16px; font-size: 15px; margin-bottom: 8px; }
 a { color: var(--accent); }
 header { display: flex; gap: 16px; align-items: center; margin: 28px 0 8px; }
-header svg { width: 64px; height: 64px; flex: none; border-radius: 14px; }
+header .icon { width: 64px; height: 64px; flex: none; border-radius: 14px; display: block; }
 h1 { font-size: 32px; line-height: 1.15; margin: 0; }
 .lede { font-size: 20px; line-height: 1.45; margin: 12px 0 20px; }
 h2 { font-size: 22px; margin: 36px 0 8px; }
@@ -47,7 +47,7 @@ section + section { border-top: 1px solid var(--rule); margin-top: 56px; }
 
 <section id="en" lang="en">
 <header>
-<svg aria-hidden="true" viewBox="0 0 1024 1024"><defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34343a"/><stop offset="1" stop-color="#0c0c0e"/></linearGradient></defs><rect width="1024" height="1024" fill="url(#bg1)"/><path d="M318 352 L498 512 L318 672" fill="none" stroke="#fff" stroke-width="84" stroke-linecap="round" stroke-linejoin="round"/><rect x="552" y="618" width="184" height="72" rx="36" fill="#30d158"/></svg>
+<picture><source srcset="img/icon-dark.png" media="(prefers-color-scheme: dark)"><img class="icon" src="img/icon.png" alt="" width="64" height="64"></picture>
 <h1>Allymote</h1>
 </header>
 <p class="lede">Your coding agent stops to ask “Allow this command?” — and you're not at your desk. Allymote puts every Claude Code and Codex agent on your computers in your pocket.</p>
@@ -90,7 +90,7 @@ irm https://github.com/aeronan/allymote-releases/releases/latest/download/instal
 
 <section id="zh-Hant" lang="zh-Hant">
 <header>
-<svg aria-hidden="true" viewBox="0 0 1024 1024"><defs><linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34343a"/><stop offset="1" stop-color="#0c0c0e"/></linearGradient></defs><rect width="1024" height="1024" fill="url(#bg2)"/><path d="M318 352 L498 512 L318 672" fill="none" stroke="#fff" stroke-width="84" stroke-linecap="round" stroke-linejoin="round"/><rect x="552" y="618" width="184" height="72" rx="36" fill="#30d158"/></svg>
+<picture><source srcset="img/icon-dark.png" media="(prefers-color-scheme: dark)"><img class="icon" src="img/icon.png" alt="" width="64" height="64"></picture>
 <h1>Allymote</h1>
 </header>
 <p class="lede">AI agent 跑到一半停下來問「要不要執行這個指令？」，你人卻不在電腦前。Allymote 讓你用 iPhone 看著、回答電腦上每一個 Claude Code 和 Codex agent。</p>
