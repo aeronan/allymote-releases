@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Allymote — your coding agents, on your iPhone</title>
+<meta name="description" content="Watch and answer the Claude Code and Codex agents running in herdr on your own computers, from your iPhone. Straight to your machine, no cloud in between.">
+<meta property="og:title" content="Allymote — your coding agents, on your iPhone">
+<meta property="og:description" content="Watch and answer every Claude Code and Codex agent on your computers from your iPhone. Straight to your own machine, no cloud in between.">
+<meta property="og:image" content="https://aeronan.github.io/allymote-releases/img/og.jpg">
+<meta property="og:url" content="https://aeronan.github.io/allymote-releases/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://aeronan.github.io/allymote-releases/img/og.jpg">
+<style>
+:root { color-scheme: light dark; --bg: #ffffff; --fg: #1c1c1e; --muted: #6e6e73; --accent: #4169e1; --rule: #d1d1d6; --code: #f2f2f7; --card: #f2f2f7; }
+@media (prefers-color-scheme: dark) { :root { --bg: #000000; --fg: #f2f2f7; --muted: #98989d; --accent: #7b9bff; --rule: #38383a; --code: #1c1c1e; --card: #1c1c1e; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+nav { display: flex; gap: 16px; font-size: 15px; margin-bottom: 8px; }
+a { color: var(--accent); }
+header { display: flex; gap: 16px; align-items: center; margin: 28px 0 8px; }
+header svg { width: 64px; height: 64px; flex: none; border-radius: 14px; }
+h1 { font-size: 32px; line-height: 1.15; margin: 0; }
+.lede { font-size: 20px; line-height: 1.45; margin: 12px 0 20px; }
+h2 { font-size: 22px; margin: 36px 0 8px; }
+p, li { overflow-wrap: anywhere; }
+code { background: var(--code); padding: 1px 5px; border-radius: 5px; font-size: 0.9em; }
+pre { background: var(--code); padding: 12px 14px; border-radius: 10px; overflow-x: auto; font-size: 14px; line-height: 1.5; margin: 8px 0 14px; }
+.store { display: inline-block; padding: 12px 22px; border-radius: 999px; background: var(--fg); color: var(--bg); font-weight: 600; text-decoration: none; }
+.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0 8px; }
+.shots img { width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--rule); display: block; }
+.shots figcaption { text-align: center; color: var(--muted); font-size: 14px; margin-top: 6px; }
+figure { margin: 0; }
+ul.points { padding-left: 1.2em; }
+ul.points li + li { margin-top: 4px; }
+ol.steps { padding-left: 1.3em; }
+ol.steps > li + li { margin-top: 14px; }
+.muted { color: var(--muted); font-size: 15px; }
+section + section { border-top: 1px solid var(--rule); margin-top: 56px; }
+@media (max-width: 560px) { .shots { grid-template-columns: 1fr 1fr; } .shots figure:last-child { display: none; } h1 { font-size: 28px; } }
+</style>
+</head>
+<body>
+<main>
+<nav><a href="#en">English</a><a href="#zh-Hant" lang="zh-Hant">繁體中文</a><a href="privacy.html">Privacy</a></nav>
+
+<section id="en" lang="en">
+<header>
+<svg aria-hidden="true" viewBox="0 0 1024 1024"><defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34343a"/><stop offset="1" stop-color="#0c0c0e"/></linearGradient></defs><rect width="1024" height="1024" fill="url(#bg1)"/><path d="M318 352 L498 512 L318 672" fill="none" stroke="#fff" stroke-width="84" stroke-linecap="round" stroke-linejoin="round"/><rect x="552" y="618" width="184" height="72" rx="36" fill="#30d158"/></svg>
+<h1>Allymote</h1>
+</header>
+<p class="lede">Your coding agent stops to ask “Allow this command?” — and you're not at your desk. Allymote puts every Claude Code and Codex agent on your computers in your pocket.</p>
+<p><a class="store" href="https://apps.apple.com/app/id6831460058">Download on the App Store</a></p>
+
+<div class="shots">
+<figure><img src="img/01-list-en.jpg" alt="Every agent on every computer in one list, the ones waiting for you marked" width="414" height="900"><figcaption>Every agent, one list</figcaption></figure>
+<figure><img src="img/03-question-en.jpg" alt="Codex asks to run a command; the choices are buttons" width="414" height="900"><figcaption>Answer in one tap</figcaption></figure>
+<figure><img src="img/02-chat-en.jpg" alt="The conversation as chat, with the agent's tools and a table" width="414" height="900"><figcaption>Read it as a chat</figcaption></figure>
+</div>
+
+<ul class="points">
+<li><strong>Answer prompts from anywhere.</strong> Permission questions become buttons; one tap and the agent carries on.</li>
+<li><strong>All your computers, one list.</strong> Mac and Windows, every agent with what it's doing and who's waiting.</li>
+<li><strong>Terminal and chat.</strong> The live terminal with the keys you need, or the same session as a readable chat.</li>
+<li><strong>Straight to your own machine.</strong> The app talks only to computers you paired, over your Tailscale network or SSH. No account, no cloud relay for your sessions, no tracking.</li>
+</ul>
+
+<h2>Set it up (about 5 minutes)</h2>
+<p>You need an iPhone, a Mac or Windows PC running your agents in <a href="https://herdr.dev">herdr</a>, and either <a href="https://tailscale.com">Tailscale</a> on both (same account) or the phone on the same Wi-Fi as the computer.</p>
+<ol class="steps">
+<li><strong>Install herdr</strong> and run your agents in it.
+<pre># Mac
+brew install herdr</pre>
+<pre># Windows (PowerShell)
+powershell -ExecutionPolicy Bypass -c "irm https://herdr.dev/install.ps1 | iex"</pre></li>
+<li><strong>Install Allymote on the computer</strong> with one line. It downloads the right build, checks its SHA-256, and sets everything up (Node.js included). It updates itself afterwards.
+<pre># Mac (Terminal)
+curl -fsSL https://github.com/aeronan/allymote-releases/releases/latest/download/install.sh | sh</pre>
+<pre># Windows (PowerShell)
+irm https://github.com/aeronan/allymote-releases/releases/latest/download/install.ps1 | iex</pre>
+<span class="muted">Prefer to download it yourself? <a href="https://github.com/aeronan/allymote-releases/releases/latest/download/allymote-macos-arm64.zip">Mac (Apple silicon)</a> · <a href="https://github.com/aeronan/allymote-releases/releases/latest/download/allymote-macos-x64.zip">Mac (Intel)</a> · <a href="https://github.com/aeronan/allymote-releases/releases/latest/download/allymote-windows-x64.zip">Windows</a>. Unzip and follow README.txt.</span></li>
+<li><strong>Pair your iPhone.</strong> Open Allymote, tap <em>Add Computer</em>, and scan the QR code the installer shows. Code expired? Run <code>allymote pair</code> (or <code>allymote pair --ssh</code> without Tailscale).</li>
+</ol>
+<p class="muted">Agents that were already running need a restart once, so herdr can tell when they're working, done, or waiting for you. Windows support is new; if something fails, email the last lines of <code>%USERPROFILE%\.allymote\server.log</code>.</p>
+
+<h2>Questions</h2>
+<p>Email <a href="mailto:sidepathnotes@gmail.com">sidepathnotes@gmail.com</a>. Read the <a href="privacy.html">privacy policy</a>. herdr is a separate product by its own developers; Allymote works with it but is not affiliated with them.</p>
+</section>
+
+<section id="zh-Hant" lang="zh-Hant">
+<header>
+<svg aria-hidden="true" viewBox="0 0 1024 1024"><defs><linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34343a"/><stop offset="1" stop-color="#0c0c0e"/></linearGradient></defs><rect width="1024" height="1024" fill="url(#bg2)"/><path d="M318 352 L498 512 L318 672" fill="none" stroke="#fff" stroke-width="84" stroke-linecap="round" stroke-linejoin="round"/><rect x="552" y="618" width="184" height="72" rx="36" fill="#30d158"/></svg>
+<h1>Allymote</h1>
+</header>
+<p class="lede">AI agent 跑到一半停下來問「要不要執行這個指令？」，你人卻不在電腦前。Allymote 讓你用 iPhone 看著、回答電腦上每一個 Claude Code 和 Codex agent。</p>
+<p><a class="store" href="https://apps.apple.com/app/id6831460058">到 App Store 下載</a></p>
+
+<div class="shots">
+<figure><img src="img/01-list-zh.jpg" alt="每台電腦的每個 agent 都在同一個列表，等你回答的會標出來" width="414" height="900" loading="lazy"><figcaption>所有 agent 一個列表</figcaption></figure>
+<figure><img src="img/03-question-zh.jpg" alt="Codex 問要不要執行指令，選項變成按鈕" width="414" height="900" loading="lazy"><figcaption>點一下就回答</figcaption></figure>
+<figure><img src="img/02-chat-zh.jpg" alt="對話排版：agent 用的工具和表格" width="414" height="900" loading="lazy"><figcaption>像聊天一樣看</figcaption></figure>
+</div>
+
+<ul class="points">
+<li><strong>在哪裡都能回答。</strong>agent 問的權限問題變成按鈕，點一下它就繼續做。</li>
+<li><strong>好幾台電腦，一個列表。</strong>Mac 和 Windows，每個 agent 在做什麼、誰在等你，一眼看完。</li>
+<li><strong>終端機和對話。</strong>即時的終端機加上常用按鍵，或把同一段 session 當成對話來讀。</li>
+<li><strong>直接連你自己的電腦。</strong>App 只連你配對過的電腦，走你的 Tailscale 網路或 SSH。不用帳號，你的 session 不經過雲端，也沒有追蹤。</li>
+</ul>
+
+<h2>設定（大約 5 分鐘）</h2>
+<p>需要：iPhone；一台在 <a href="https://herdr.dev">herdr</a> 裡跑 agent 的 Mac 或 Windows；電腦和 iPhone 都裝 <a href="https://tailscale.com">Tailscale</a> 並登入同一個帳號，或手機和電腦在同一個 Wi-Fi。</p>
+<ol class="steps">
+<li><strong>安裝 herdr</strong>，在裡面開你的 agent。
+<pre># Mac
+brew install herdr</pre>
+<pre># Windows（PowerShell）
+powershell -ExecutionPolicy Bypass -c "irm https://herdr.dev/install.ps1 | iex"</pre></li>
+<li><strong>在電腦上裝 Allymote</strong>，一行指令。它會下載你電腦的版本、比對 SHA-256，再把一切設定好（自帶 Node.js），之後會自動更新。
+<pre># Mac（終端機）
+curl -fsSL https://github.com/aeronan/allymote-releases/releases/latest/download/install.sh | sh</pre>
+<pre># Windows（PowerShell）
+irm https://github.com/aeronan/allymote-releases/releases/latest/download/install.ps1 | iex</pre>
+<span class="muted">想自己下載：<a href="https://github.com/aeronan/allymote-releases/releases/latest/download/allymote-macos-arm64.zip">Mac（Apple 晶片）</a> · <a href="https://github.com/aeronan/allymote-releases/releases/latest/download/allymote-macos-x64.zip">Mac（Intel）</a> · <a href="https://github.com/aeronan/allymote-releases/releases/latest/download/allymote-windows-x64.zip">Windows</a>，解壓縮後照 README.txt 做。</span></li>
+<li><strong>配對 iPhone。</strong>打開 Allymote，點「新增電腦」，掃安裝程式最後顯示的 QR 碼。配對碼過期了：執行 <code>allymote pair</code>（沒有 Tailscale：<code>allymote pair --ssh</code>）。</li>
+</ol>
+<p class="muted">已經開著的 agent 要重開一次，herdr 才知道它在工作、做完了還是在等你。Windows 版是新的，遇到問題請把 <code>%USERPROFILE%\.allymote\server.log</code> 最後幾行寄給我們。</p>
+
+<h2>問題</h2>
+<p>寫信到 <a href="mailto:sidepathnotes@gmail.com">sidepathnotes@gmail.com</a>。<a href="privacy.html">隱私權政策</a>。herdr 是另一個團隊的產品；Allymote 搭配它使用，但和他們沒有關係。</p>
+</section>
+</main>
+</body>
+</html>
