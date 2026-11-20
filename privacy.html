@@ -23,21 +23,30 @@ section + section { border-top: 1px solid var(--rule); margin-top: 48px; }
 <nav><a href="#en">English</a><a href="#zh-Hant" lang="zh-Hant">繁體中文</a></nav>
 <section id="en" lang="en">
 <h1>Allymote Privacy Policy</h1>
-<p>Effective date: 19 November 2026</p>
-<p>Allymote is an iPhone app that lets you watch and drive the AI agents running in herdr on your own computers. This policy covers Allymote version 1.0.</p>
+<p>Effective date: 20 November 2026</p>
+<p>Allymote is an iPhone app that lets you watch and drive the AI agents running in herdr on your own computers. This policy covers Allymote version 1.0.1. What changed since 1.0: optional notifications, through a relay described below.</p>
 <h2>The short version</h2>
 <ul>
-<li><strong>We collect nothing.</strong> The developer of Allymote runs no server for the app and receives no data from it: no account, no analytics, no advertising, no tracking, no crash reports sent to us.</li>
+<li><strong>We collect nothing about you.</strong> No account, no analytics, no advertising, no tracking, no crash reports sent to us.</li>
+<li><strong>Notifications are optional and sealed.</strong> If you turn them on, your computer encrypts each notification so only your iPhone can read it, and a small relay run by the developer hands it to Apple. The relay cannot read it and keeps no record of it.</li>
 <li><strong>The app talks only to your own computers.</strong> Everything you see and send in Allymote travels between your iPhone and the computers you paired yourself, over your own network (your Tailscale network, or your local network over SSH), encrypted with HTTPS or SSH.</li>
 <li><strong>What stays on your phone stays on your phone.</strong> Nothing the app keeps is sent to the developer or to anyone else.</li>
 </ul>
 <h2>Who runs what</h2>
-<p>Allymote has two parts, and you run both of them:</p>
+<p>Allymote has two parts that you run, and one optional part the developer runs:</p>
 <ol>
 <li><strong>The app</strong> on your iPhone.</li>
 <li><strong>The Allymote server</strong> on your own Mac or Windows PC, next to herdr. If you add a computer over SSH with "Only herdr", there is no Allymote server on it: the app talks to herdr itself. herdr is a separate, third-party product (herdr.dev); Allymote works with herdr but is not made by or affiliated with its developers.</li>
+<li><strong>The push relay</strong>, only if you turn on notifications (see below). Nothing else the app does goes through it.</li>
 </ol>
-<p>There is no third part. The developer of Allymote does not operate a relay, a cloud service or any other server that your data passes through. Version 1.0 has no push notifications.</p>
+<h2>Notifications (optional)</h2>
+<p>Notifications are off until you turn them on in Settings → Notifications. When they are on:</p>
+<ul>
+<li>The app makes an encryption key on your iPhone and registers with the Allymote push relay, a service the developer runs on Cloudflare Workers. The relay keeps only: your iPhone's Apple push token, which Allymote app it is for, a random handle, a hash of a secret only your phone holds, and the ids of the credentials your phone gave to your computers.</li>
+<li>Each computer you allow gets its own credential. The computer encrypts every notification (for example, that an agent is waiting for your answer, and what it asks) with your iPhone's key before sending it. The relay and Apple see only the encrypted message; your iPhone decrypts it on the device.</li>
+<li>The relay does not store or log what passes through it. Cloudflare handles the network requests (including IP addresses) under its own privacy policy, and Apple delivers the notification through the Apple Push Notification service.</li>
+<li>Turning notifications off makes the relay forget this phone (if the phone is offline, the next time the app opens). Removing a computer withdraws that computer's credential.</li>
+</ul>
 <h2>What the app sends, and where</h2>
 <p>The app connects only to the computers you pair with it, in one of two ways:</p>
 <ul>
@@ -57,6 +66,7 @@ section + section { border-top: 1px solid var(--rule); margin-top: 48px; }
 <h2>What is kept on your phone</h2>
 <ul>
 <li><strong>Device tokens</strong>, one per paired computer, in the iOS Keychain, readable only while the device is unlocked, on this device only (they are not synced to iCloud and are not restored to another device).</li>
+<li><strong>Notification keys</strong>, if notifications are on: the key that decrypts them and the phone's relay handle and secret, in the Keychain on this device only, and the count shown on the app icon.</li>
 <li><strong>SSH keys</strong>, one per computer added over SSH. The private key is made in the iPhone's Secure Enclave and never leaves it; the Keychain holds only the enclave's wrapped form, on this device only.</li>
 <li><strong>Settings and list preferences</strong> in the app's own storage on the phone: the paired computers' names and addresses (for SSH, also the user name, ports and the computer's host key), whether the app lock is on, text size and layout, pinned, muted and folded items in the list, and the first messages you used for new sessions (text that looks like a password or key is never kept).</li>
 </ul>
@@ -79,29 +89,38 @@ section + section { border-top: 1px solid var(--rule); margin-top: 48px; }
 <h2>Your computer and your network</h2>
 <p>Your computer and your network (your Tailscale network or your local network) are yours. What the Allymote server and herdr on your computer keep (for example, its list of paired devices, an audit log of their actions, and attachments for 7 days) stays on that computer. Tailscale is a third-party service with its own privacy policy; Allymote does not send it anything beyond the normal network traffic between your own devices.</p>
 <h2>Children</h2>
-<p>Allymote is a tool for people who run AI coding agents on their own computers. It is not directed at children and collects no data from anyone.</p>
+<p>Allymote is a tool for people who run AI coding agents on their own computers. It is not directed at children and collects no personal data from anyone.</p>
 <h2>Changes</h2>
-<p>If a later version changes what is described here (for example, by adding push notifications), this policy will be updated before that version is released, with a new effective date.</p>
+<p>If a later version changes what is described here, this policy will be updated before that version is released, with a new effective date.</p>
 <h2>Contact</h2>
 <p>Questions about this policy: <a href="mailto:sidepathnotes@gmail.com">sidepathnotes@gmail.com</a></p>
 </section>
 <section id="zh-Hant" lang="zh-Hant">
 <h1>Allymote 隱私權政策</h1>
-<p>生效日期：2026 年 11 月 19 日</p>
-<p>Allymote 是一款 iPhone app，讓你查看並操作自己電腦上、在 herdr 裡執行的 AI agent。本政策適用於 Allymote 1.0 版。</p>
+<p>生效日期：2026 年 11 月 20 日</p>
+<p>Allymote 是一款 iPhone app，讓你查看並操作自己電腦上、在 herdr 裡執行的 AI agent。本政策適用於 Allymote 1.0.1 版。和 1.0 的差別：可選用的推播通知，經由下文說明的轉送服務。</p>
 <h2>重點摘要</h2>
 <ul>
-<li><strong>我們不蒐集任何資料。</strong> Allymote 的開發者沒有為這個 app 架設任何伺服器，也不會從 app 收到任何資料：沒有帳號、沒有分析、沒有廣告、沒有追蹤，也不會把當機報告傳給我們。</li>
+<li><strong>我們不蒐集任何關於你的資料。</strong> 沒有帳號、沒有分析、沒有廣告、沒有追蹤，也不會把當機報告傳給我們。</li>
+<li><strong>推播通知是選用的，而且經過加密。</strong> 你打開通知後，電腦會把每則通知加密成只有你的 iPhone 讀得到，再由開發者經營的小型轉送服務交給 Apple。轉送服務讀不到內容，也不留任何紀錄。</li>
 <li><strong>App 只和你自己的電腦連線。</strong> 你在 Allymote 裡看到和送出的一切，都只在你的 iPhone 和你親自配對的電腦之間傳輸，經由你自己的網路（你的 Tailscale 網路，或透過 SSH 連線的區域網路），並以 HTTPS 或 SSH 加密。</li>
 <li><strong>留在手機上的就只留在手機上。</strong> App 保存的任何東西都不會傳給開發者或其他任何人。</li>
 </ul>
 <h2>誰在執行什麼</h2>
-<p>Allymote 由兩個部分組成，兩者都由你自己執行：</p>
+<p>Allymote 有兩個由你自己執行的部分，以及一個由開發者經營、可選用的部分：</p>
 <ol>
 <li>你 iPhone 上的 <strong>app</strong>。</li>
 <li>你自己的 Mac 或 Windows 電腦上、與 herdr 一起執行的 <strong>Allymote 伺服器</strong>。若你透過 SSH 新增電腦時選擇「只有 herdr」，那台電腦上就沒有 Allymote 伺服器，app 會直接和 herdr 溝通。herdr 是獨立的第三方產品（herdr.dev）；Allymote 可與 herdr 搭配使用，但並非由 herdr 的開發者製作，與其也沒有任何隸屬關係。</li>
+<li><strong>推播轉送服務</strong>：只有在你打開通知時才會用到（見下文）。app 的其他功能都不經過它。</li>
 </ol>
-<p>除此之外沒有第三個部分。Allymote 的開發者不經營任何中繼站、雲端服務或其他會經手你資料的伺服器。1.0 版沒有推播通知。</p>
+<h2>推播通知（選用）</h2>
+<p>通知預設關閉，要在「設定 → 通知」自己打開。打開之後：</p>
+<ul>
+<li>app 會在你的 iPhone 上產生一把加密金鑰，並向 Allymote 推播轉送服務登記。這個服務由開發者在 Cloudflare Workers 上經營，只保存：你 iPhone 的 Apple 推播 token、它屬於哪一個 Allymote app、一個隨機代號、只有你手機知道的密鑰的雜湊值，以及你手機發給各台電腦的憑證編號。</li>
+<li>你允許的每台電腦各有自己的憑證。電腦送出每則通知前（例如有 agent 在等你回答，以及它問了什麼），會先用你 iPhone 的金鑰加密。轉送服務和 Apple 只看得到加密後的內容，由你的 iPhone 在裝置上解密。</li>
+<li>轉送服務不保存、也不記錄經過它的內容。網路請求（包括 IP 位址）由 Cloudflare 依其隱私權政策處理，通知則由 Apple 推播通知服務送達。</li>
+<li>關閉通知後，轉送服務會刪除這支手機的登記（手機離線時，會在下次打開 app 時刪除）。移除一台電腦，會收回那台電腦的憑證。</li>
+</ul>
 <h2>App 會送出什麼、送到哪裡</h2>
 <p>App 只會連線到你配對的電腦，方式有兩種：</p>
 <ul>
@@ -121,6 +140,7 @@ section + section { border-top: 1px solid var(--rule); margin-top: 48px; }
 <h2>保存在手機上的資料</h2>
 <ul>
 <li><strong>裝置權杖</strong>：每台配對的電腦一個，存放在 iOS 鑰匙圈中，只在裝置解鎖時可讀取，且只存在這台裝置上（不會同步到 iCloud，也不會還原到其他裝置）。</li>
+<li><strong>通知金鑰</strong>（打開通知時）：解密通知的金鑰，以及手機在轉送服務的代號與密鑰，只存在這台裝置的鑰匙圈中；還有 app 圖示上的數字。</li>
 <li><strong>SSH 金鑰</strong>：每台透過 SSH 新增的電腦一把。私鑰在 iPhone 的 Secure Enclave 內產生，永遠不會離開它；鑰匙圈裡只保存 Secure Enclave 包裝過的形式，且只存在這台裝置上。</li>
 <li><strong>設定與列表偏好</strong>：存放在手機上 app 自己的儲存空間，包括配對電腦的名稱與位址（SSH 電腦還有使用者名稱、連接埠和電腦的主機金鑰）、是否開啟 app 鎖定、文字大小與版面，列表中釘選、靜音和收合的項目，以及你用過的新工作階段開頭訊息（看起來像密碼或金鑰的文字一律不保存）。</li>
 </ul>
@@ -143,9 +163,9 @@ section + section { border-top: 1px solid var(--rule); margin-top: 48px; }
 <h2>你的電腦與你的網路</h2>
 <p>你的電腦和你的網路（你的 Tailscale 網路或區域網路）屬於你自己。你電腦上的 Allymote 伺服器和 herdr 所保存的資料（例如已配對裝置清單、裝置操作的稽核紀錄，以及保存 7 天的附件）都留在那台電腦上。Tailscale 是第三方服務，有自己的隱私權政策；除了你自己裝置之間的一般網路傳輸外，Allymote 不會傳送任何資料給它。</p>
 <h2>兒童</h2>
-<p>Allymote 是給在自己電腦上執行 AI 程式 agent 的人使用的工具，並非以兒童為對象，也不會蒐集任何人的資料。</p>
+<p>Allymote 是給在自己電腦上執行 AI 程式 agent 的人使用的工具，並非以兒童為對象，也不會蒐集任何人的個人資料。</p>
 <h2>政策變更</h2>
-<p>若之後的版本改變了本政策所描述的內容（例如加入推播通知），本政策會在該版本發布前更新，並標示新的生效日期。</p>
+<p>若之後的版本改變了本政策所描述的內容，本政策會在該版本發布前更新，並標示新的生效日期。</p>
 <h2>聯絡方式</h2>
 <p>對本政策有任何疑問：<a href="mailto:sidepathnotes@gmail.com">sidepathnotes@gmail.com</a></p>
 </section>
